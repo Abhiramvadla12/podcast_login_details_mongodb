@@ -1,14 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const {dbConnect} = require("./db.js");
-
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(express.json());
-
+app.use(cors())
 dbConnect();
 
 mongoose.connection.once("open", () => {
